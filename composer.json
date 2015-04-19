@@ -12,5 +12,6 @@
     "autoload": {
         "classmap": [
             "src/phputils"
-        ],
+        ]
+    }
 }
