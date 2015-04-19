@@ -1,6 +1,7 @@
 <?php
+use Symfony\Component\VarDumper\VarDumper;
+
 if (!function_exists('dd')) {
-    use Symfony\Component\VarDumper\VarDumper;
     /**
      * Wrapper for Symfony Dumper + die
      * @author Unamata Sanatarai <unamatasanatarai@gmail.com>
