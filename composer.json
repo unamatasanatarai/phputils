@@ -1,0 +1,16 @@
+{
+    "name": "unamatasanatarai/phputils",
+    "description": "PHP Utility productivity methods",
+    "license": "GNU GENERAL PUBLIC LICENSE",
+    "authors": [
+        {
+            "name": "unamatasanatarai",
+            "email": "unamatasanatarai@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "classmap": [
+            "src/phputils"
+        ],
+}
