@@ -8,8 +8,8 @@
             "email": "unamatasanatarai@gmail.com"
         }
     ],
-    "require-dev": {
-        "symfony/var-dumper": "3.0.*@dev"
+    "require": {
+        "symfony/var-dumper": "3.0.*"
     },
     "autoload": {
         "files": [
