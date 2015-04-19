@@ -10,8 +10,8 @@
     ],
     "require": {},
     "autoload": {
-        "classmap": [
-            "src/phputils"
+        "files": [
+            "src/phputils/dd.php"
         ]
     }
 }
