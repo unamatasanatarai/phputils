@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "symfony/var-dumper": "3.0.*"
+        "symfony/var-dumper": "3.0.*@dev"
     },
     "autoload": {
         "files": [
