@@ -9,10 +9,12 @@
         }
     ],
     "require": {
-        "symfony/var-dumper": "3.0.*@dev"
+        "symfony/var-dumper": "3.0.*@dev",
+        "imagine/imagine": "0.6.2"
     },
     "autoload": {
         "files": [
+            "src/phputils/Image.php",
             "src/phputils/File.php",
             "src/phputils/Folder.php",
             "src/phputils/Inflector.php",
