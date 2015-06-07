@@ -13,7 +13,10 @@
     },
     "autoload": {
         "files": [
-            "src/phputils/dd.php"
+            "src/phputils/Inflector.php",
+            "src/phputils/Arr.php",
+            "src/phputils/dd.php",
+            "src/phputils/h.php"
         ]
     }
 }
