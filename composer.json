@@ -19,6 +19,7 @@
             "src/phputils/Folder.php",
             "src/phputils/Inflector.php",
             "src/phputils/Arr.php",
+            "src/phputils/DotSet.php",
             "src/phputils/dd.php",
             "src/phputils/h.php"
         ]
