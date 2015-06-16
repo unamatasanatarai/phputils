@@ -1,6 +1,6 @@
 <?php
 /**
- * Flat array utils
+ * Flat array utils + tree
  *
  * PHP Version 5
  *
@@ -19,6 +19,55 @@ if (!class_exists('Arr')) {
 
     class Arr
     {
+
+        /**
+         * Format a nested tree based on parent_id
+         * @param  [array] $data       [description]
+         * @param  [array] $conditions [description]
+         * @return [array]             [description]
+         */
+        public static function toNestedTree($data = array(), $conditions = array('parent_id' => 0)){
+            if (!$data){
+                return array();
+            }
+            $new_data = array();
+            $base_tree = Arr::getWhere($data, $conditions);
+            foreach ($base_tree as &$node) {
+                $children = Arr::getWhere($data, array('parent_id' => $node['id']));
+                foreach($children as &$child_node){
+                    $child_node['children'] = self::toNestedTree($data, array('parent_id' => $child_node['id']));
+                }
+                $node['children'] = $children;
+            }
+            return $base_tree;
+        }
+
+        /**
+         * Take tree from Tree::format() and prepend names to show indentation levels "--"
+         */
+        public static function nestedToFlat($data, $name_col = 'name'){
+            $return = array();
+            foreach ($data as $node) {
+
+                $children = $node['children'];
+                unset($node['children']);
+                $return[] = $node;
+
+                if (!empty($children)){
+                    $children = self::nestedToFlat(
+                        $children,
+                        $name_col
+                    );
+                    foreach($children as $child){
+                        $child[$name_col] = $node[$name_col] .' > '. $child[$name_col];
+                        $return[] = $child;
+                    }
+                }
+            }
+
+            return $return;
+        }
+
         // get nodes where conditions are met
         // getWhere($array, array('parent_id' => 3, 'active' => 1))
         public static function getWhere($data, $conditions){
@@ -28,7 +77,7 @@ if (!class_exists('Arr')) {
                 $conditions_num = 0;
                 foreach($conditions as $condition_key => $condition_val){
                     // vd($condition_key, $condition_val);
-                    if (array_get($node, $condition_key) == $condition_val){
+                    if (Arr::get($node, $condition_key) == $condition_val){
                         $conditions_num++;
                     }
                 }

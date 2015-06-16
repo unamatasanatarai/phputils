@@ -13,13 +13,10 @@
         "imagine/imagine": "0.6.2"
     },
     "autoload": {
+        "psr-4": {
+            "": "src/phputils"
+        },
         "files": [
-            "src/phputils/Image.php",
-            "src/phputils/File.php",
-            "src/phputils/Folder.php",
-            "src/phputils/Inflector.php",
-            "src/phputils/Arr.php",
-            "src/phputils/DotSet.php",
             "src/phputils/dd.php",
             "src/phputils/h.php"
         ]
