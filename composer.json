@@ -18,6 +18,7 @@
         },
         "files": [
             "src/phputils/stripslashes_deep.php",
+            "src/phputils/env.php",
             "src/phputils/dd.php",
             "src/phputils/h.php"
         ]
