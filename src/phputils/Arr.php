@@ -44,6 +44,31 @@ if (!class_exists('Arr')) {
         }
 
         /**
+         * Find and return value by key in nestedTree
+         * @param  [type] $needle   [description]
+         * @param  [type] $haystack [description]
+         * @return [type]           [description]
+         */
+        public static function findInNestedTree($needle, $haystack){
+            if (isset($haystack[$needle])){
+                return $haystack[$needle];
+            }
+            foreach($haystack as $key => $value) {
+                if (is_array($value)){
+                    if (isset($value[$needle])){
+                        return $value[$needle];
+                    }else{
+                        $next = self::findInNestedTree($needle, $value);
+                        if ($next !== false){
+                            return $next;
+                        }
+                    }
+                }
+            }
+            return false;
+        }
+
+        /**
          * Take tree from Tree::format() and prepend names to show indentation levels "--"
          */
         public static function nestedToFlat($data, $name_col = 'name'){
