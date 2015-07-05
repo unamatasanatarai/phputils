@@ -9,6 +9,7 @@
  * @author   Unamata Sanatarai <unamatasanatarai@gmail.com>
  * @license  http://www.gnu.org/copyleft/gpl.html GNU General Public License
  * @link     https://github.com/unamatasanatarai/phputils
+ * @version  2.0
  */
 
 if (!class_exists('Arr')) {
@@ -31,11 +32,11 @@ if (!class_exists('Arr')) {
                 return array();
             }
             $new_data = array();
-            $base_tree = Arr::getWhere($data, $conditions);
+            $base_tree = Arr::reindex(Arr::getWhere($data, $conditions), 'id');
             foreach ($base_tree as &$node) {
-                $children = Arr::getWhere($data, array('parent_id' => $node['id']));
-                foreach($children as &$child_node){
-                    $child_node['children'] = self::toNestedTree($data, array('parent_id' => $child_node['id']));
+                $children = Arr::reindex(Arr::getWhere($data, array('parent_id' => $node['id'])), 'id');
+                foreach($children as $id => $child_node){
+                    $children[$id]['children'] = self::toNestedTree($data, array('parent_id' => $child_node['id']));
                 }
                 $node['children'] = $children;
             }
