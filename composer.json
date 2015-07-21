@@ -10,7 +10,7 @@
     ],
     "require": {
         "symfony/var-dumper": "3.0.*@dev",
-        "imagine/imagine": "0.6.2"
+        "imagine/imagine": "dev-master"
     },
     "autoload": {
         "psr-4": {
