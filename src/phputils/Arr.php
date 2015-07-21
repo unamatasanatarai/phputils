@@ -31,7 +31,6 @@ if (!class_exists('Arr')) {
             if (!$data){
                 return array();
             }
-            $new_data = array();
             $base_tree = Arr::reindex(Arr::getWhere($data, $conditions), 'id');
             foreach ($base_tree as &$node) {
                 $children = Arr::reindex(Arr::getWhere($data, array('parent_id' => $node['id'])), 'id');
