@@ -60,5 +60,11 @@ if (!class_exists('Response')) {
                 header('HTTP/1.1 ' . $code . ' ' . self::$codes[$code]);
             }
         }
+
+        public static function json($value)
+        {
+            header('Content-Type: application/json');
+            return json_encode($value);
+        }
     }
 }
